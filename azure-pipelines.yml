@@ -16,19 +16,20 @@ strategy:
       python.version: '3.5'
     Python36:
       python.version: '3.6'
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.x'
-    addToPath: true
-    architecture: 'x64'
     Python37:
       python.version: '3.7'
+
 
 steps:
 - task: UsePythonVersion@0
   inputs:
     versionSpec: '$(python.version)'
   displayName: 'Use Python $(python.version)'
+- task: UsePythonVersion@0
+  inputs:
+      versionSpec: '3.x'
+    addToPath: true
+    architecture: 'x64'
 
 - script: |
     python -m pip install --upgrade pip
